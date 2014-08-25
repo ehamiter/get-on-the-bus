@@ -23,7 +23,7 @@ Since I am lazy, I decided to have this automated, which uses (ideally) a Raspbe
 5. Create the file `config.py`
 6. Create new Client ID for web application and download the JSON as `client_secrets.json` and set `CLIENT_SECRET_FILE = 'client_secrets.json'` in `config.py`
 7. Create a new key for browser application and set the `API KEY` value as `API_KEY = xxx` in `config.py`
-8. Create a new Google calendar and set the the ID as `CALENDAR_ID = xxx` in `config.py`
+8. Create a new Google calendar and set the ID as `CALENDAR_ID = xxx` in `config.py` (Click drop-down arrow by calendar name; choose 'Calendar Settings'; find ID by 'Calendar Address' section)
 9. Run the program: `python alarm.py`
 
 All new events will try to play the name of the event as an mp3 file in the `mp3s` folder with spaces converted to underscores, i.e.:  
