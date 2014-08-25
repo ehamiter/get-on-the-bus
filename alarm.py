@@ -11,6 +11,8 @@ from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client.tools import run
 
+from config import *
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -19,19 +21,6 @@ logger = logging.getLogger(__name__)
 FREQUENCY_CHECK = 15 # in seconds
 MP3_FOLDER = 'mp3s'
 
-# Get this information from a project created at https://console.developers.google.com
-# Key for browser applications
-API_KEY = ''
-
-# Client ID and client secret for web application can be downloaded as a JSON file which
-# should remain out of version control systems but accessible to the OAuth flow below
-CLIENT_SECRET_FILE = 'client_secrets.json'
-
-# To find calendar_id:
-# - Click dropdown button next to calendar name in the sidebar
-# - Select 'Calendar Settings'
-# - Copy the ID in the 'Calendar Address' section
-CALENDAR_ID = ''
 
 flow = flow_from_clientsecrets(CLIENT_SECRET_FILE,
                                scope='https://www.googleapis.com/auth/calendar',
@@ -70,7 +59,7 @@ def calendar_event_query():
                 os.system(command)
 
 def poll():
-    logger.info('Polling calendar for events...'
+    logger.info('Polling calendar for events...')
     calendar_event_query()
 
 scheduler = BlockingScheduler()
