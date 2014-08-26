@@ -8,11 +8,20 @@ This year, my kids started riding the school bus, which is super convenient and 
 
 Since I am lazy, I decided to have this automated, which uses (ideally) a Raspberry Pi and Google Calendar to check for 'Get on the bus' events, and fires an appropriately annoying song snippet from The Doodlebops called 'Get on the bus.' It's dynamic in the sense that it will try and play any mp3 with the event title, and falls back to a default mp3 (my default.mp3 is an old school Nokia ringtone-- of course, you can make yours anything you wish).
 
-1. Install [mpg123](http://sourceforge.net/projects/mpg123/files/):
+1. Install `mpg123`:
+    * If you're on OS X, you can install `mpg123` via [Homebrew](http://brew.sh):
 
+        ```sh
+        brew install mpg123
+        ```
+
+    * Or you can download the [source](http://sourceforge.net/projects/mpg123/files/) and run:
+
+        ```sh
         ./configure
         make
         make install
+        ```
 
 2. Install the requirements:
 
