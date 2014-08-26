@@ -2,7 +2,7 @@
 # http://www.esologic.com/?p=634
 
 from datetime import datetime
-import logging, os
+import logging, os, platform, re
 
 from apiclient.discovery import build
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -22,6 +22,7 @@ FREQUENCY_CHECK = 15 # in seconds
 MP3_FOLDER = 'mp3s'
 
 
+system = platform.system().lower()
 flow = flow_from_clientsecrets(CLIENT_SECRET_FILE,
                                scope='https://www.googleapis.com/auth/calendar',
                                redirect_uri='http://localhost:8080/')
@@ -42,7 +43,7 @@ def calendar_event_query():
     events = service.events().list(singleEvents=True, calendarId=CALENDAR_ID).execute()
 
     for i, event in enumerate(events['items']):
-        event_name = event['summary']
+        event_name = event['summary'].lower()
         event_start = event['start']['dateTime'][:-9]
         now = today.strftime('%Y-%m-%dT%H:%M')
 
@@ -50,12 +51,16 @@ def calendar_event_query():
             logger.debug('Event #%s, Event Name: %s, Event Start: %s', i, event_name, event_start)
 
             if event_start == now:
-                mp3_files = os.listdir(MP3_FOLDER)
-                mp3_name = event_name.replace(' ', '_') + '.mp3'
-                mp3_name = mp3_name if mp3_name in mp3_files else 'default.mp3'
-
-                logger.info('Event %s starting. Playing mp3 file %s...', event_name, mp3_name)
-                command = 'mpg123 \'{}/{}\''.format(MP3_FOLDER, mp3_name)
+                if event_name.startswith('say'):
+                    event_name = re.sub(r'[^a-zA-Z0-9\s\']', '', event_name)
+                    command = '{0} "{1}"'.format('say' if system == 'darwin' else 'espeak -ven+m2', event_name[4:])
+                    logger.info('Event starting. Announcing \'%s\'...', event_name[4:])
+                else:
+                    mp3_files = os.listdir(MP3_FOLDER)
+                    mp3_name = event_name.replace(' ', '_') + '.mp3'
+                    mp3_name = mp3_name if mp3_name in mp3_files else 'default.mp3'
+                    command = 'mpg123 \'{}/{}\''.format(MP3_FOLDER, mp3_name)
+                    logger.info('Event %s starting. Playing mp3 file %s...', event_name, mp3_name)
                 os.system(command)
 
 def poll():
