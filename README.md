@@ -29,7 +29,6 @@ It's dynamic in the sense that it will try and play any mp3 with the event title
         make
         make install
         ```
-
 2. Install the requirements:
 
         pip install -r requirements.txt
@@ -46,4 +45,4 @@ All new events will try to play the name of the event as an mp3 file in the `mp3
 
 `Get on the bus` == `mp3s/get_on_the_bus.mp3`  
 
-If the event has no corresponding mp3 file, `default.mp3` will play.
+If the event has no corresponding mp3 file, `default.mp3` will play. To have the sound play repeatedly until the event's time expires, enter `repeat` as the event's description.
