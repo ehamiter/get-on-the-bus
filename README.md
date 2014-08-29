@@ -16,19 +16,19 @@ For example:
 It's dynamic in the sense that it will try and play any mp3 with the event title, and falls back to a default mp3 (my default.mp3 is an old school Nokia ringtone-- of course, you can make yours anything you wish).
 
 1. Install `mpg123`:
-    * If you're on OS X, you can install `mpg123` via [Homebrew](http://brew.sh):
+  * If you're on OS X, you can install `mpg123` via [Homebrew](http://brew.sh):
 
-        ```sh
-        brew install mpg123
-        ```
+    ```sh
+    brew install mpg123
+    ```
 
-    * Or you can download the [source](http://sourceforge.net/projects/mpg123/files/) and run:
+  * Or you can download the [source](http://sourceforge.net/projects/mpg123/files/) and run:
 
-        ```sh
-        ./configure
-        make
-        make install
-        ```
+    ```sh
+    ./configure
+    make
+    make install
+    ```
 2. Install the requirements:
 
         pip install -r requirements.txt
