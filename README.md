@@ -29,6 +29,7 @@ Pre-requisite: `mpg123`
     make
     make install
     ```
+
 1. Install the requirements:
 
         pip install -r requirements.txt
