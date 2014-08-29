@@ -15,7 +15,7 @@ For example:
 
 It's dynamic in the sense that it will try and play any mp3 with the event title, and falls back to a default mp3 (my default.mp3 is an old school Nokia ringtone-- of course, you can make yours anything you wish).
 
-1. Install `mpg123`:
+Pre-requisite: `mpg123`
   * If you're on OS X, you can install `mpg123` via [Homebrew](http://brew.sh):
 
     ```sh
@@ -29,17 +29,17 @@ It's dynamic in the sense that it will try and play any mp3 with the event title
     make
     make install
     ```
-2. Install the requirements:
+1. Install the requirements:
 
         pip install -r requirements.txt
 
-3. Create a new project on the [Google Developers Console](https://console.developers.google.com)
-4. Enable the Calendars API
-5. Create the file `config.py`
-6. Create new Client ID for web application and download the JSON as `client_secrets.json` and set `CLIENT_SECRET_FILE = 'client_secrets.json'` in `config.py`
-7. Create a new key for browser application and set the `API KEY` value as `API_KEY = xxx` in `config.py`
-8. Create a new Google calendar and set the ID as `CALENDAR_ID = xxx` in `config.py` (Click drop-down arrow by calendar name; choose 'Calendar Settings'; find ID by 'Calendar Address' section)
-9. Run the program: `python alarm.py`
+2. Create a new project on the [Google Developers Console](https://console.developers.google.com)
+3. Enable the Calendars API
+4. Create the file `config.py`
+5. Create new Client ID for web application and download the JSON as `client_secrets.json` and set `CLIENT_SECRET_FILE = 'client_secrets.json'` in `config.py`
+6. Create a new key for browser application and set the `API KEY` value as `API_KEY = xxx` in `config.py`
+7. Create a new Google calendar and set the ID as `CALENDAR_ID = xxx` in `config.py` (Click drop-down arrow by calendar name; choose 'Calendar Settings'; find ID by 'Calendar Address' section)
+8. Run the program: `python alarm.py`
 
 All new events will try to play the name of the event as an mp3 file in the `mp3s` folder with spaces converted to underscores, i.e.:  
 
