@@ -2,7 +2,7 @@
 # http://www.esologic.com/?p=634
 
 from datetime import datetime
-import logging, os, platform, re
+import logging, os, platform, re, time
 
 from apiclient.discovery import build
 from apscheduler.schedulers.blocking import BlockingScheduler
@@ -18,9 +18,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Configuration
-FREQUENCY_CHECK = 15 # in seconds
+FREQUENCY_CHECK = 10 # in seconds
 MP3_FOLDER = 'mp3s'
-
 
 system = platform.system().lower()
 flow = flow_from_clientsecrets(CLIENT_SECRET_FILE,
@@ -45,6 +44,8 @@ def calendar_event_query():
     for i, event in enumerate(events['items']):
         event_name = event['summary'].lower()
         event_start = event['start']['dateTime'][:-9]
+        event_description = event.get('description', '')
+        repeat = True if event_description.lower() == 'repeat' else False
         now = today.strftime('%Y-%m-%dT%H:%M')
 
         if event_start >= now:
@@ -62,6 +63,8 @@ def calendar_event_query():
                     command = 'mpg123 \'{}/{}\''.format(MP3_FOLDER, mp3_name)
                     logger.info('Event %s starting. Playing mp3 file %s...', event_name, mp3_name)
                 os.system(command)
+                if repeat == False:
+                    time.sleep(60)
 
 def poll():
     logger.info('Polling calendar for events...')
