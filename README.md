@@ -16,6 +16,11 @@ For example:
 It's dynamic in the sense that it will try and play any mp3 with the event title, and falls back to a default mp3 (my default.mp3 is an old school Nokia ringtone-- of course, you can make yours anything you wish).
 
 Pre-requisite: `mpg123`
+  * If you're on Linux, you can install `mpg123` via apt-get:
+    ```sh
+    sudo apt-get install mpg123
+    ```
+
   * If you're on OS X, you can install `mpg123` via [Homebrew](http://brew.sh):
 
     ```sh
@@ -28,6 +33,11 @@ Pre-requisite: `mpg123`
     ./configure
     make
     make install
+    ```
+
+Pre-requisite for Linux text to speech: `espeak`
+    ```sh
+    sudo apt-get install espeak
     ```
 
 1. Install the requirements:
