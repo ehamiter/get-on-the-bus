@@ -17,6 +17,7 @@ It's dynamic in the sense that it will try and play any mp3 with the event title
 
 Pre-requisite: `mpg123`
   * If you're on Linux, you can install `mpg123` via apt-get:
+
     ```sh
     sudo apt-get install mpg123
     ```
