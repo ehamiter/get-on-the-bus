@@ -36,11 +36,9 @@ Pre-requisite: `mpg123`
     make install
     ```
 
-Pre-requisite for Linux text to speech: `espeak`  
+Pre-requisite for Linux text to speech: `espeak`:
 
-    ```sh
     sudo apt-get install espeak
-    ```
 
 1. Install the requirements:
 
