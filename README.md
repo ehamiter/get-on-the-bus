@@ -50,10 +50,19 @@ Pre-requisite for Linux text to speech: `espeak`
 5. Create new Client ID for web application and download the JSON as `client_secrets.json` and set `CLIENT_SECRET_FILE = 'client_secrets.json'` in `config.py`
 6. Create a new key for browser application and set the `API KEY` value as `API_KEY = xxx` in `config.py`
 7. Create a new Google calendar and set the ID as `CALENDAR_ID = xxx` in `config.py` (Click drop-down arrow by calendar name; choose 'Calendar Settings'; find ID by 'Calendar Address' section)
-8. Run the program: `python alarm.py`
+8. Add `FREQUENCY_CHECK` (in seconds) and `MP3_FOLDER` location in `config.py`.
+9. Run the program: `python alarm.py`
 
 All new events will try to play the name of the event as an mp3 file in the `mp3s` folder with spaces converted to underscores, i.e.:  
 
 `Get on the bus` == `mp3s/get_on_the_bus.mp3`  
 
 If the event has no corresponding mp3 file, `default.mp3` will play. To have the sound play repeatedly until the event's time expires, enter `repeat` as the event's description.
+
+Example `config.py` file:
+
+    API_KEY = '123456789qwertyuiop987654321asdfghjkl54321'
+    CALENDAR_ID = 'mnbvcxzlkjhgfdsa123@group.calendar.google.com'
+    CLIENT_SECRET_FILE = 'client_secrets.json'
+    FREQUENCY_CHECK = 5 # in seconds
+    MP3_FOLDER = 'mp3s'
