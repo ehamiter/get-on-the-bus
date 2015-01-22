@@ -22,6 +22,8 @@ class Alarm():
     flow = flow_from_clientsecrets(CLIENT_SECRET_FILE,
                                    scope='https://www.googleapis.com/auth/calendar',
                                    redirect_uri='http://localhost:8080/')
+    flow.params['access_type'] = 'offline'
+    flow.params['approval_prompt'] = 'force'
 
     storage = Storage('calendar.dat')
     credentials = storage.get()
@@ -44,7 +46,11 @@ class Alarm():
 
         for i, event in enumerate(events['items']):
             name = event['summary'].lower()
-            start = event['start']['dateTime'][:-9]
+            try:
+                start = event['start']['dateTime'][:-9]
+            except KeyError:
+                start = ''
+
             description = event.get('description', '')
             repeat = True if description.lower() == 'repeat' else False
             now = today.strftime('%Y-%m-%dT%H:%M')
