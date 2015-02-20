@@ -30,7 +30,6 @@ class Alarm():
     if credentials is None or credentials.invalid == True:
         credentials = run(flow, storage)
 
-    # Google Calendar service connection
     http = httplib2.Http()
     http = credentials.authorize(http)
     service = build(serviceName='calendar', version='v3', http=http, developerKey=API_KEY)
