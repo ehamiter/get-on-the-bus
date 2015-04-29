@@ -1,3 +1,5 @@
+# Notice: This code and the corresponding google API have changed several times since this was first published. It is currently not stable, so do not rely on this being reliable or even working. I will try and remedy the stability of it, but currently this is low on my list of priorities.
+
 ## Get on the bus
 
 > Google calendar makes sweet love to your alarm clock
