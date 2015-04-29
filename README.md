@@ -49,7 +49,7 @@ Pre-requisite for Linux text to speech: `espeak`
 2. Create a new project on the [Google Developers Console](https://console.developers.google.com)
 3. Enable the Calendars API
 4. Create the file `config.py`
-5. Create new Client ID for web application and download the JSON as `client_secrets.json` and set `CLIENT_SECRET_FILE = 'client_secrets.json'` in `config.py`
+5. Create new Client ID for standalone application and download the JSON as `client_secrets.json` and set `CLIENT_SECRET_FILE = 'client_secrets.json'` in `config.py`
 6. Create a new key for browser application and set the `API KEY` value as `API_KEY = xxx` in `config.py`
 7. Create a new Google calendar and set the ID as `CALENDAR_ID = xxx` in `config.py` (Click drop-down arrow by calendar name; choose 'Calendar Settings'; find ID by 'Calendar Address' section)
 8. Add `FREQUENCY_CHECK` (in seconds) and `MP3_FOLDER` location in `config.py`.
